@@ -1,8 +1,14 @@
 const HOST_URI = "https://www.v2ex.com/api/";
+const REPLY_URI = HOST_URI + "replies/show.json";
+const TOPIC_TYPES = {
+  latest: HOST_URI + "topics/latest.json",
+  hot: HOST_URI + "topics/hot.json"
+};
+const PAGE_LIMIT = 20;
 
 const fetchData = (url, method, successCallback, failCallback) => {
   fetch(url, {
-    method: method
+    method: method,
   })
     .then(response => response.json())
     .then(responseJSON => {
@@ -14,17 +20,12 @@ const fetchData = (url, method, successCallback, failCallback) => {
 };
 
 const fetchList = (channel, successCallback, failCallback) => {
-  let URL = HOST_URI
-  if (channel === '最新') {
-    // https://www.v2ex.com/api/topics/latest.json
-    URL += 'topics/latest.json'
-  } else if (channel === '最热') {
-    URL += 'topics/hot.json'
-  } else {
-    URL += 'nodes/show.json?name='
-  }
-  
-  return fetchData(URL, 'GET', successCallback, failCallback)
-}
+  let URL = TOPIC_TYPES[channel];
+  return fetchData(URL, "GET", successCallback, failCallback);
+};
 
-export { fetchList }
+const fetchReplies = (topicId, page, successCallback, failCallback) => {
+  return fetchData(REPLY_URI + "?topic_id=" + topicId, "GET", successCallback);
+};
+
+export { fetchList, fetchReplies };

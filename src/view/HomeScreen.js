@@ -1,17 +1,33 @@
 import React from "react";
-import { View } from "react-native"
-import Toolbar from '../components/Toolbar'
-import TopicList from './TopicList'
-import { themeColor } from '../common/colors'
+import { createStackNavigator } from "react-navigation";
+import TopicView from "./TopicView";
+import { themeColor } from "../common/colors";
+import TopicDetail from "./TopicDetail";
 
-export default class HomeScreen extends React.Component {
-  render() {
-    return (
-      <View style={{backgroundColor: themeColor.backgroundColor}}>
-        <Toolbar title={"V2EX"}/>
-        <TopicList/>
-      </View>
-    )
+export default createStackNavigator(
+  {
+    Main: {
+      screen: TopicView,
+      navigationOptions: ({ navigation }) => ({
+        title: "V2EX"
+      })
+    },
+    Topic: TopicDetail
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        borderBottomWidth: 0.25,
+        borderBottomColor: "#d1d1d1"
+      },
+      headerTitleStyle: {
+        fontSize: 18,
+        color: themeColor.primaryText,
+        fontWeight: "400"
+      }
+    }),
+    cardStyle: {
+      backgroundColor: themeColor.backgroundColor
+    }
   }
-}
-
+);
