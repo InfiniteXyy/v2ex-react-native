@@ -80,6 +80,8 @@ export default class TopicDetail extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    borderTopColor: "#D1D1D1",
+    borderTopWidth: 0.25,
     paddingHorizontal: 20,
     backgroundColor: "white",
     paddingBottom: 16
@@ -93,8 +95,6 @@ const styles = StyleSheet.create({
     height: 44,
     paddingHorizontal: 25,
     justifyContent: "center",
-    borderTopColor: "#D1D1D1",
-    borderTopWidth: 0.25,
     borderBottomColor: "#fafafa",
     borderBottomWidth: 2
   },

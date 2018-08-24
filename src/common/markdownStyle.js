@@ -8,7 +8,14 @@ const customMarkdownStyle = StyleSheet.create({
   },
   codeBlock: {
     fontFamily: "Courier",
-    fontWeight: "400"
+    fontWeight: "400",
+    color: themeColor.primaryText,
+    backgroundColor: "#f8f8f8",
+    fontSize: 14.7,
+    borderRadius: 8,
+    marginVertical: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
   },
   del: {
     backgroundColor: themeColor.primaryText
@@ -23,13 +30,10 @@ const customMarkdownStyle = StyleSheet.create({
     lineHeight: 28
   },
   a: {
-    textDecorationLine: "underline",
-    color: "#FF0000"
+    fontWeight: "600",
+    color: "#42b983"
   },
-  u: {
-    borderColor: "#000000",
-    borderBottomWidth: 1
-  }
+
 });
 
 export default customMarkdownStyle;

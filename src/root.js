@@ -1,17 +1,39 @@
 import React from "react";
 import App from "./view/App";
-import { YellowBox } from "react-native";
-import momentLocale from "moment/locale/zh-cn";
-import moment from "moment";
+import { createStackNavigator } from "react-navigation";
+import TopicDetail from "./view/TopicDetail";
+import { themeColor } from "./common/colors";
 
-export default class Root extends React.Component {
-  constructor(props) {
-    super(props);
-    moment.updateLocale("zh-cn", momentLocale);
-    YellowBox.ignoreWarnings(["Task orphaned"]);
+export default createStackNavigator(
+  {
+    Main: {
+      screen: App,
+      navigationOptions: ({ navigation }) => ({
+        title: "V2EX",
+        headerBackTitle: null,
+      })
+    },
+    Topic: {
+      screen: TopicDetail,
+      navigationOptions: ({ navigation }) => ({
+        headerTintColor: themeColor.activeIcon,
+      })
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        borderBottomWidth: 0,
+        backgroundColor: "white"
+      },
+      headerTitleStyle: {
+        fontSize: 18,
+        color: themeColor.primaryText,
+        fontWeight: "400"
+      }
+    }),
+    cardStyle: {
+      backgroundColor: themeColor.backgroundColor
+    }
   }
-
-  render() {
-    return <App />;
-  }
-}
+);

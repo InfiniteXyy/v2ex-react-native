@@ -1,5 +1,4 @@
 const HOST_URI = "https://www.v2ex.com/api/";
-const REPLY_URI = HOST_URI + "replies/show.json";
 const TOPIC_TYPES = {
   latest: HOST_URI + "topics/latest.json",
   hot: HOST_URI + "topics/hot.json"
@@ -25,7 +24,13 @@ const fetchList = (channel, successCallback, failCallback) => {
 };
 
 const fetchReplies = (topicId, page, successCallback, failCallback) => {
+  const REPLY_URI = HOST_URI + "replies/show.json";
   return fetchData(REPLY_URI + "?topic_id=" + topicId, "GET", successCallback);
 };
 
-export { fetchList, fetchReplies };
+const fetchNodes = (successCallback) => {
+  let URL = HOST_URI + "nodes/all.json"
+  return fetchData(URL, "GET", successCallback)
+}
+
+export { fetchList, fetchReplies, fetchNodes };

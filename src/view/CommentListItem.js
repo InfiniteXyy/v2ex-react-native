@@ -27,10 +27,6 @@ export default class CommentListItem extends React.Component {
             </Text>
             <Text style={styles.timeAndFloor}>{timeAndFloor}</Text>
           </View>
-
-          <View style={{ flex: 1, alignItems: "flex-end" }}>
-            <Text style={{color: themeColor.secondaryText}}>{"0 次感谢"}</Text>
-          </View>
         </View>
         <Text style={styles.commentBody}>{commentItem.content}</Text>
       </View>
